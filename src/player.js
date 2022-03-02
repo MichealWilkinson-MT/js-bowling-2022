@@ -1,23 +1,22 @@
 class BowingPlayer {
-    _points = 0;
-    getPoints = () => {
-        return this._points;
-    };
-}
+    playerPoints = () => {
+        let points = 0
+        return points;
+    }
+
+    _player = 'Bobo';
+    getPlayer = () => {
+        return this._player;
+    }
+
+    newFrame = () => {
+        for (let newFrame = 0; newFrame <= 2; newFrame++) {
+            return newFrame;
+        }
+    }
+};
+
+
 module.exports = {
     BowingPlayer
-}    
-
-
-
-// scorePoint = () => {
-//         if(this._points == 0) {
-//             this._points = 15;
-//           }
-//           else if(this._points == 15) {
-//             this._points = 30;
-//           }
-//           else if (this._points == 30) {
-//             this._points = 40;
-//           }
-//     };
+}
