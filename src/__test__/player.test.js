@@ -3,7 +3,8 @@ const {
 } = require('../player');
 
 describe('Get player points', () => {
-    it('Given a player has rolled no balls their score should be 0', () => {
-        // The test for this needs to go here
+    it('Given a player has 0 points, when retrieving their points, then we get 0', () => {
+        const player = new BowingPlayer();
+        expect(player.getPoints()).toEqual(0);
     });
-});
+})
