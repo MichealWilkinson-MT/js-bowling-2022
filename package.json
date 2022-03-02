@@ -1,0 +1,22 @@
+{
+  "name": "js-bowling-2022",
+  "version": "1.0.0",
+  "description": "1. Fork this repository (top left)\r 2. Clone your fork `git clone https://github.com/<YOUR GH USERNAME>/js-bowling-2022.git`\r     - NB: If using github desktop ensure you select \"For my own purposes\" and not \"To Contribute to the upstream project\" when cloning your fork\r 3. Work in branches",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichealWilkinson-MT/js-bowling-2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichealWilkinson-MT/js-bowling-2022/issues"
+  },
+  "homepage": "https://github.com/MichealWilkinson-MT/js-bowling-2022#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
