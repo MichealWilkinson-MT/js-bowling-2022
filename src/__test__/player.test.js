@@ -23,4 +23,9 @@ describe('Creating a new frame', () => {
     })
 })
 
-describe('')
+describe('Checks if rolls are set to 2 when creating new frame', () => {
+    it('Sets rolls to 2', () => {
+        const roll = new BowingPlayer();
+        expect(roll.newFrame()).toEqual(2);
+    })
+})
