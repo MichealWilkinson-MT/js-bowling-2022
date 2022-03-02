@@ -1,6 +1,6 @@
 # Bowling
 ## Generic instructions
-1. Fork this repository (top left)
+1. Fork this repository (top right)
 2. Clone your fork `git clone https://github.com/<YOUR GH USERNAME>/js-bowling-2022.git`
     - NB: If using github desktop ensure you select "For my own purposes" and not "To Contribute to the upstream project" when cloning your fork
 3. Work in branches
