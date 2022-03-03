@@ -61,23 +61,23 @@ This would denote that the first 5 frames have been bowled by "Player Name 1" bu
 ## Scoring spares and strikes
 Spares are relatively simple, if a player scores a spare their score is 10 (total number of pins knocked down) + the number of pins knocked down on the first ball of the next frame
 
-A strike can become more complex if you score multiple strikes in a row
+A strike can become more complex if you score multiple strikes in a row  
 Strike: score 10 points + the number of pins you knock down for the entire next frame.
 
-Double:
-1st frame – 20 points + the number of pins you knock down in 3rd frame 
-2nd frame – same as scoring for strike
+Double:  
+1st frame – 20 points + the number of pins you knock down in 3rd frame   
+2nd frame – same as scoring for strike  
 
-Turkey:
-1st frame - 30 points 
-2nd frame – same as scoring for double
-3rd frame – same as scoring for strike
+Turkey:  
+1st frame - 30 points   
+2nd frame – same as scoring for double  
+3rd frame – same as scoring for strike  
 
-Four-Bagger (and onwards):
-1st frame - 30 points 
-2nd frame - 30 points 
-3rd frame – same as scoring for double
-4th frame – same as scoring for strike
+Four-Bagger (and onwards):  
+1st frame - 30 points   
+2nd frame - 30 points   
+3rd frame – same as scoring for double  
+4th frame – same as scoring for strike  
 
 ## Strikes spares and the 10th frame
 If in the regular 2 balls you get for the 10th frame you score a spare, you then get 1 extra ball, this is used to calculate the score for your spare BUT NOT added to the total
