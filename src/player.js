@@ -1,19 +1,17 @@
 class BowingPlayer {
-    constructor(player, points)  {
+    constructor(player)  {
         this.player = player
-        this.points = points
+        this.points = []
     }
     getPlayer = () => {
         return this.player;
     }
     getPoints = () => {
-        this.points = []
         return this.points;
     }
-    // scoreGame = (pins) => {
-    //     this.points += pins;
-    //     return this.points.push(pins);
-    // }
+    scoreGame(pins) {
+        this.points.push(pins)
+    }
 };
 
 
