@@ -1,22 +1,19 @@
 class BowingPlayer {
-    _player = 'Bobo';
-    _rolls = 0;
-
-    playerPoints = () => {
-        let points = 0
-        return points;
+    constructor(player, points)  {
+        this.player = player
+        this.points = points
     }
-
     getPlayer = () => {
-        return this._player;
+        return this.player;
     }
-
-    newFrame = () => {
-        for (let newFrame = 0; newFrame <= 2; newFrame++) {
-            this.rolls = 2;
-            return newFrame;
-        }
+    getPoints = () => {
+        this.points = []
+        return this.points;
     }
+    // scoreGame = (pins) => {
+    //     this.points += pins;
+    //     return this.points.push(pins);
+    // }
 };
 
 
