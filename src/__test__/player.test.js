@@ -18,16 +18,16 @@ describe('Retrieves Player Points', ()  => {
 
 describe('Retrieves score if pins are 0', () => {
     it('Retrieves score of 0', () => {
-        const currentPoints = new BowingPlayer([]);
-        currentPoints.scoreGame(0)
-        expect(currentPoints.getPoints()).toEqual([])
+        const currentPoints = new BowingPlayer();
+        currentPoints.scoreGame('0')
+        expect(currentPoints.getPoints()).toEqual(['0'])
     })
 })
 
 describe('Retrieves score if pins are 1', () => {
     it('Retrieves score of 1', () => {
-        const currentPoints = new BowingPlayer([]);
-        currentPoints.scoreGame(1)
-        expect(currentPoints.getPoints()).toEqual(1)
+        const currentPoints = new BowingPlayer();
+        currentPoints.scoreGame('1')
+        expect(currentPoints.getPoints()).toEqual(['1'])
     })
 })
