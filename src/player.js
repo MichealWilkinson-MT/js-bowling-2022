@@ -1,5 +1,6 @@
 class BowlingPlayer {
 score = 0
+totalFrame = 0
 getScore = () => {
     return this.score;
 }
@@ -7,13 +8,11 @@ recordBall = (numberOfPins) => {
     this.score += numberOfPins
 }
 isAStrike = (numberOfPins) => {
-    if (numberOfPins == 10){
+    if (this.score == 10){
         return true;
     }
-    else{
-    return false;
+    return false
     }
-}
 }
 
 module.exports = {
