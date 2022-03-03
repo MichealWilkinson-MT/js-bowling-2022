@@ -23,4 +23,10 @@ describe('Get player points', () => {
         player.recordBall(6)
         expect(player.getScore()).toEqual(9);
     })
+    it('Given a player has rolled 1 ball and hit 10 their frame should be a strike', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.isAStrike()
+        expect(player.isAStrike()).toEqual(true);
+    })
 });

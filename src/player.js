@@ -6,6 +6,14 @@ getScore = () => {
 recordBall = (numberOfPins) => {
     this.score += numberOfPins
 }
+isAStrike = (numberOfPins) => {
+    if (numberOfPins == 10){
+        return true;
+    }
+    else{
+    return false;
+    }
+}
 }
 
 module.exports = {
