@@ -2,30 +2,32 @@ const {
     BowingPlayer
 } = require('../player');
 
-describe('Get player points', () => {
-    it('Given a player has 0 points, when retrieving their points, then we get 0', () => {
-        const player = new BowingPlayer();
-        expect(player.playerPoints()).toEqual(0);
-    });
-})
-
-describe('Get player name', () => {
-    it('Retrieves Player name', () => {
-        const name = new BowingPlayer();
-        expect(name.getPlayer()).toEqual('Bobo');
-    });
-})
-
-describe('Creating a new frame', () => {
-    it('Retrieves New frame', () => {
-        const frame = new BowingPlayer();
-        expect(frame.newFrame()).toEqual(0);
+describe('Retrieves Player Name', () => {
+    it('Retrieves Player Name', () => {
+        const game = new BowingPlayer('Wes');
+    expect(game.getPlayer()).toEqual('Wes');
     })
 })
 
-describe('Checks if rolls are set to 2 when creating new frame', () => {
-    it('Sets rolls to 2', () => {
-        const roll = new BowingPlayer();
-        expect(roll.newFrame()).toEqual(2);
+describe('Retrieves Player Points', ()  => {
+    it('Retrieves Player Points', ()  => {
+        const currentPoints = new BowingPlayer();
+    expect(currentPoints.getPoints()).toEqual([]);
+    })
+})
+
+describe('Retrieves score if pins are 0', () => {
+    it('Retrieves score of 0', () => {
+        const currentPoints = new BowingPlayer();
+        currentPoints.scoreGame('0')
+        expect(currentPoints.getPoints()).toEqual(['0'])
+    })
+})
+
+describe('Retrieves score if pins are 1', () => {
+    it('Retrieves score of 1', () => {
+        const currentPoints = new BowingPlayer();
+        currentPoints.scoreGame('1')
+        expect(currentPoints.getPoints()).toEqual(['1'])
     })
 })
