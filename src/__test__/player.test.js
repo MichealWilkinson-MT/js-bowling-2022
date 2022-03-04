@@ -23,10 +23,39 @@ describe('Get player points', () => {
         player.recordBall(6)
         expect(player.getScore()).toEqual(9);
     })
-    it('Given a player has rolled 1 ball and hit 10 their frame should be a strike', () => {
+    xit('Given a player has rolled 1 ball and hit 10 their frame should be a strike', () => {
         const player = new BowlingPlayer();
         player.recordBall(10)
         player.isAStrike()
         expect(player.isAStrike()).toEqual(true);
+    })
+    it('Given a player has rolled both balls for a frame we can return the score for the frame', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(1)
+        player.recordBall(8)
+        expect(player.getFramePins(1)).toEqual(9)
+    })
+    it('Given a player has rolled both balls for a frame we can return the score for the frame', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(2)
+        player.recordBall(4)
+        expect(player.getFramePins(1)).toEqual(6)
+    })
+    it('Given a player has rolled both balls for two frames we can return the score for the frames', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(2)
+        player.recordBall(4)
+        player.recordBall(1)
+        player.recordBall(8)
+        expect(player.getFramePins(1)).toEqual(6)
+        expect(player.getFramePins(2)).toEqual(9)
+    })
+    it('Given a player has rolled both balls for two frames we can return the score for the frames', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.recordBall(1)
+        player.recordBall(8)
+        expect(player.getFramePins(1)).toEqual(10)
+        expect(player.getFramePins(2)).toEqual(9)
     })
 });
