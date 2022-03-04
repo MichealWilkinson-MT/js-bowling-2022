@@ -23,12 +23,6 @@ describe('Get player points', () => {
         player.recordBall(6)
         expect(player.getScore()).toEqual(9);
     })
-    xit('Given a player has rolled 1 ball and hit 10 their frame should be a strike', () => {
-        const player = new BowlingPlayer();
-        player.recordBall(10)
-        player.isAStrike()
-        expect(player.isAStrike()).toEqual(true);
-    })
     it('Given a player has rolled both balls for a frame we can return the score for the frame', () => {
         const player = new BowlingPlayer();
         player.recordBall(1)
@@ -57,5 +51,15 @@ describe('Get player points', () => {
         player.recordBall(8)
         expect(player.getFramePins(1)).toEqual(10)
         expect(player.getFramePins(2)).toEqual(9)
+    })
+    it('Given a player has rolled 1 ball and hit a strike in frame 1 it will return strike for frame 1', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        expect(player.isFrameAStrike(1)).toEqual(true)
+    })
+    it('Given a player has rolled a ball and hit a strike in frame 1 & 7 it will return strike for frame 1 & 7', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        expect(player.isFrameAStrike(1, 7)).toEqual(true)
     })
 });
