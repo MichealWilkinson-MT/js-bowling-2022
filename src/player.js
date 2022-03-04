@@ -56,14 +56,24 @@ class BowlingPlayer {
                 frame++
                 frameball = 1
             }
-
-    isFrameASpare
-    //is a strike == no && score == 10 
-    //return true
         }
     }
-}
 
+    getBallsInFrame = (framenumber) => {
+        let balls = []
+        return balls
+
+    }
+
+    isFrameASpare = (framenumber) => {
+            if (this.isFrameAStrike(framenumber) == false && this.getFramePins(framenumber) == 10) {
+                return true
+            }
+            return false
+            //is a strike == no && score == 10 
+            //return true
+        }
+    }
 module.exports = {
     BowlingPlayer
 }

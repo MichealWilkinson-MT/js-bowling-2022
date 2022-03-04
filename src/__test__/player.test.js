@@ -63,3 +63,9 @@ describe('Get player points', () => {
         expect(player.isFrameAStrike(1, 7)).toEqual(true)
     })
 });
+    it('Given a player has rolled a ball and hit a strike in frame 1 & 7 it will return strike for frame 1 & 7', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(9)
+        player.recordBall(1)
+        expect(player.isFrameASpare(1)).toEqual(true)
+})
