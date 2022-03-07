@@ -158,4 +158,22 @@ describe('Get player points', () => {
         player.recordBall(2)
         expect(player.frameScoring(1)).toEqual("X")
     });
+    it('Given a player has bowled a perfect game they should recieve 300', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(10)
+        expect(player.frameScoring(10)).toEqual(300)
+        expect(player.frameScoring(1)).toEqual(30)
+        expect(player.frameScoring(3)).toEqual(90)
+    });
 });
