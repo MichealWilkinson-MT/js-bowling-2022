@@ -67,7 +67,16 @@ class BowlingPlayer {
     }
 
 
-
+    isFrameComplete = (framenumber) => {
+        for (let i = 1; i <= framenumber; i++) {
+            if (this.getBallsInFrame(framenumber).length <= 2) {
+                return true
+            }
+            return false
+        }
+    }
+    //function line 82
+    //return true
 
     frameScoring = (framenumber) => {
         let score = 0

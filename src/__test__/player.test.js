@@ -127,4 +127,10 @@ describe('Get player points', () => {
         player.recordBall(0)
         expect(player.frameScoring(1)).toEqual(13)
     });
+    it('Given a player has bowled both balls the frame is completed', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(8)
+        player.recordBall(1)
+        expect(player.isFrameComplete(1)).toEqual(true)
+    });
 });
