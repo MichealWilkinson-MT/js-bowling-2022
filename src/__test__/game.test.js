@@ -33,5 +33,14 @@ describe('check game has players', () => {
         game.recordScore(5)
         expect(game.currentPlayerTurn().name).toEqual("AJ");
     })
+    it('after every player has had their turn, it resets to the first player', () => {
+        const game = new BowlingGame(["Steve", "AJ", "Jamie", "Callum", "Mark"]);
+        game.recordScore(10)
+        game.recordScore(10)
+        game.recordScore(10)
+        game.recordScore(10)
+        game.recordScore(10)
+        expect(game.currentPlayerTurn().name).toEqual("Steve");
+    })
 
 })

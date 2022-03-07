@@ -19,8 +19,13 @@ class BowlingGame {
          const isValid = this.players[this.currentPlayerID].recordBall(score)
         
         if (this.players[this.currentPlayerID].isFrameComplete(this.framenumber)) {
-            this.currentPlayerID ++
+            this.currentPlayerID++
+            if (this.currentPlayerID >= this.players.length) {
+                this.currentPlayerID = 0
+                this.framenumber ++
+            }
         }
+
         return isValid
    }
     
