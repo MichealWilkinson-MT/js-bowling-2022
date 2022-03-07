@@ -18,14 +18,14 @@ class BowlingPlayer {
     getFramePins = (framenumber) => {
         const balls = this.getBallsInFrame(framenumber)
         let totalScore = 0
-        for (let i = 0; i < balls.length; i++){
+        for (let i = 0; i < balls.length; i++) {
             totalScore = totalScore + balls[i]
         }
         return totalScore
     }
     isFrameAStrike = (framenumber) => {
         const balls = this.getBallsInFrame(framenumber)
-        if (balls[0] == 10){
+        if (balls[0] == 10) {
             return true
         }
         return false
@@ -53,38 +53,56 @@ class BowlingPlayer {
                 frameball = 1
             }
         }
-            return balls
-        
+        return balls
+
 
     }
 
     isFrameASpare = (framenumber) => {
-            if (this.isFrameAStrike(framenumber) == false && this.getFramePins(framenumber) == 10) {
-                return true
+        if (this.isFrameAStrike(framenumber) == false && this.getFramePins(framenumber) == 10) {
+            return true
+        }
+        return false
+
+    }
+
+
+
+
+    frameScoring = (framenumber) => {
+        let score = 0
+        const balls = this.getBallsInFrame(framenumber)
+
+        if (balls.length < 2) {
+            return "";
+        }
+        if (this.isFrameASpare(framenumber) && this.getBallsInFrame(framenumber + 1).length < 1) {
+
+            return "/";
+        }
+        for (let i = 1; i <= framenumber; i++) {
+            score = score + this.getFramePins(i)
+            if (this.isFrameASpare(i)) {
+                const theNextBall = this.getBallsInFrame(i + 1)[0]
+                score = score + theNextBall
             }
-            return false
 
         }
+        return score
+    }
+}
 
 
 
 
-    //gameScoring = () => {
-     //   for (let i = 1; i <= 10; i++){
-
-     //   }
 //for loop to go through frames
 // if statment for strike
 //if statment for spare
 // way to add the output onto score
 
 
-
-    }
 module.exports = {
     BowlingPlayer
 }
 
 
-// calculate score
-// 

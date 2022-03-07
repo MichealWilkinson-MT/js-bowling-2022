@@ -74,6 +74,39 @@ describe('Get player points', () => {
         player.recordBall(4)
         player.recordBall(3)
         player.recordBall(1)
-        expect(player.getFramePins(1) + player.getFramePins(2)).toEqual(13)
+        expect(player.getFramePins(1)).toEqual(9)
+        expect(player.getFramePins(2)).toEqual(4)
+    });
+    it('Given a player has had 2 balls and it is not a strike it will return the score', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(7)
+        player.recordBall(2)
+        expect(player.frameScoring(1)).toEqual(9)
+    });
+    it('Given a player has had 2 balls for 2 frames and it is not a strike it will return the score', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(7)
+        player.recordBall(2)
+        player.recordBall(2)
+        player.recordBall(6)
+        expect(player.frameScoring(2)).toEqual(17)
+    });
+    it('Given a player has rolled a ball for 1 frames and its not complete return an empty string', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(7)
+        expect(player.frameScoring(1)).toEqual("")
+    });
+    it('Given a player has hit a spare it will return a / if the next ball has not been bowled yet', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(7)
+        player.recordBall(3)
+        expect(player.frameScoring(1)).toEqual("/")
+    });
+    it('Given a player has hit a spare it will add the next pin to the score', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(7)
+        player.recordBall(3)
+        player.recordBall(3)
+        expect(player.frameScoring(1)).toEqual(13)
     });
 });
