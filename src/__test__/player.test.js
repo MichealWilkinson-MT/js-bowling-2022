@@ -193,4 +193,8 @@ describe('Get player points', () => {
         player.recordBall(6)
         expect(player.recordBall(11)).toEqual(false)
     });
+    it('a player has a name when starting', () => {
+        const player = new BowlingPlayer("Tom");
+        expect(player.name).toEqual("Tom")
+    });
 })

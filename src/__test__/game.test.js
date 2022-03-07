@@ -4,8 +4,9 @@ const {
 
 
 describe('check game has players', () => {
-    xit('Check the game has a max of 10 frames per person', () => {
+    xit('check the game has at least 1 player', () => {
         const game = new BowlingGame();
-        expect(game.getFrame()).toEqual(0,10);
+        game.
+        expect().toEqual(0,10);
     })
 })

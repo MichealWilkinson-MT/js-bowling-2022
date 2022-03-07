@@ -2,6 +2,9 @@
 class BowlingPlayer {
     score = 0
     balls = []
+    constructor(playerName) {
+    this.name = playerName
+    }
     getScore = () => {
         return this.score;
     }
