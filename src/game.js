@@ -10,6 +10,10 @@ class BowlingGame {
         }
 }
 
+    
+    currentPlayerTurn = () => {
+        return this.players[0]
+    }
 }
 
 
