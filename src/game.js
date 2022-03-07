@@ -9,11 +9,13 @@ class BowlingGame {
             this.players.push(new BowlingPlayer(playerName))
         }
 }
-
-    
     currentPlayerTurn = () => {
         return this.players[0]
     }
+    recordScore = (score) => {
+        return this.players[0].recordBall(score)
+   }
+    
 }
 
 

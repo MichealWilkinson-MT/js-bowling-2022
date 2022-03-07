@@ -16,5 +16,10 @@ describe('check game has players', () => {
         const game = new BowlingGame(["Steve", "AJ", "Jamie", "Callum","Mark"]);
         expect(game.currentPlayerTurn().name).toEqual("Steve");
     })
+    it('player took their turn and recorded their score', () => {
+        const game = new BowlingGame(["Steve", "AJ", "Jamie", "Callum", "Mark"]);
+        game.recordScore(4)
+        expect(game.players[0].getFramePins(1)).toEqual(4);
+    })
 
 })
