@@ -9,6 +9,26 @@ class BowlingPlayer {
         if (numberOfPins > 10 || numberOfPins < 0) {
             return false
         }
+        let frame = 1
+        let frameball = 1
+        for (let i = 0; i < this.balls.length; i++) {
+    
+            if (this.balls[i] == 10) {
+                frameball = 1
+                frame++
+                continue
+            }
+
+            frameball++
+            if (frameball > 2) {
+                frame++
+                frameball = 1
+            }
+        }
+        if (!this.isFrameComplete(frame) && (this.getFramePins(frame) + numberOfPins > 10)){
+            return false
+        }
+            
         this.score += numberOfPins
         this.balls.push(numberOfPins)
         return true

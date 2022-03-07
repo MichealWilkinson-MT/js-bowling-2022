@@ -187,4 +187,10 @@ describe('Get player points', () => {
         player.recordBall(-1)
         expect(player.recordBall(-1)).toEqual(false)
     });
+    it('Given a player scored greater than 10 for both balls, it doesnt work', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(5)
+        player.recordBall(6)
+        expect(player.recordBall(11)).toEqual(false)
+    });
 })
