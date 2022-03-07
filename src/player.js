@@ -88,7 +88,10 @@ class BowlingPlayer {
                 const theNextBall = this.getBallsInFrame(i + 1)[0]
                 score = score + theNextBall
             }
-
+            if (this.isFrameAStrike(i)) {
+                const theNextFrame = this.getFramePins(i + 1)
+                score = score + theNextFrame
+            }
         }
         return score
     }

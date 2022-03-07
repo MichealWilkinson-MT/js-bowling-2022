@@ -109,9 +109,22 @@ describe('Get player points', () => {
         player.recordBall(3)
         expect(player.frameScoring(1)).toEqual(13)
     });
-    it('Given a player has hit a spare it will return an X if the next frame isnt complete', () => {
+    it('Given a player has hit a strike it will return an X if the next frame isnt complete', () => {
         const player = new BowlingPlayer();
         player.recordBall(10)
         expect(player.frameScoring(1)).toEqual("X")
+    });
+    it('Given a player has hit a strike it will return an X if the next frame isnt complete', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.recordBall(5)
+        expect(player.frameScoring(1)).toEqual("X")
+    });
+    it('Given a player has hit a strike  it will add the next frame to the score', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.recordBall(3)
+        player.recordBall(0)
+        expect(player.frameScoring(1)).toEqual(13)
     });
 });
