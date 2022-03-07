@@ -68,15 +68,11 @@ class BowlingPlayer {
 
 
     isFrameComplete = (framenumber) => {
-        for (let i = 1; i <= framenumber; i++) {
-            if (this.getBallsInFrame(framenumber).length <= 2) {
+        if (this.getBallsInFrame(framenumber).length == 2 || this.isFrameAStrike(framenumber)) {
                 return true
             }
             return false
         }
-    }
-    //function line 82
-    //return true
 
     frameScoring = (framenumber) => {
         let score = 0
@@ -88,7 +84,7 @@ class BowlingPlayer {
         if (this.isFrameASpare(framenumber) && this.getBallsInFrame(framenumber + 1).length < 1) {
             return "/";
         }
-        if (this.isFrameAStrike(framenumber) && this.getBallsInFrame(framenumber + 1).length < 2) {
+        if (this.isFrameAStrike(framenumber) && !this.isFrameComplete(framenumber + 1)) {
             return "X";
         }
         for (let i = 1; i <= framenumber; i++) {
