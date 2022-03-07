@@ -73,12 +73,14 @@ class BowlingPlayer {
         let score = 0
         const balls = this.getBallsInFrame(framenumber)
 
-        if (balls.length < 2) {
+        if (balls.length < 2 && !this.isFrameAStrike(framenumber)) {
             return "";
         }
         if (this.isFrameASpare(framenumber) && this.getBallsInFrame(framenumber + 1).length < 1) {
-
             return "/";
+        }
+        if (this.isFrameAStrike(framenumber) && this.getBallsInFrame(framenumber + 1).length < 2) {
+            return "X";
         }
         for (let i = 1; i <= framenumber; i++) {
             score = score + this.getFramePins(i)

@@ -109,4 +109,9 @@ describe('Get player points', () => {
         player.recordBall(3)
         expect(player.frameScoring(1)).toEqual(13)
     });
+    it('Given a player has hit a spare it will return an X if the next frame isnt complete', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        expect(player.frameScoring(1)).toEqual("X")
+    });
 });
