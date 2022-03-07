@@ -2,6 +2,8 @@ const { BowlingPlayer } = require("./player")
 
 
 class BowlingGame {
+    currentPlayerID = 0
+    framenumber = 1
     constructor(players) {
         this.players = []
         for (let i = 0; i < players.length; i++){
@@ -10,10 +12,16 @@ class BowlingGame {
         }
 }
     currentPlayerTurn = () => {
-        return this.players[0]
+        return this.players[this.currentPlayerID]
     }
     recordScore = (score) => {
-        return this.players[0].recordBall(score)
+
+         const isValid = this.players[this.currentPlayerID].recordBall(score)
+        
+        if (this.players[this.currentPlayerID].isFrameComplete(this.framenumber)) {
+            this.currentPlayerID ++
+        }
+        return isValid
    }
     
 }
