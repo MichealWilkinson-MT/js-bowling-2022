@@ -27,7 +27,13 @@ class BowlingGame {
         }
 
         return isValid
-   }
+    }
+    isGameFinished = () => {
+        if (this.players[this.currentPlayerID].isFrameComplete(this.framenumber < 11 )) {
+            return true 
+        }
+        return false
+    }
     
 }
 

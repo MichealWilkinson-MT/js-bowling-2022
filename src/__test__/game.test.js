@@ -42,5 +42,28 @@ describe('check game has players', () => {
         game.recordScore(10)
         expect(game.currentPlayerTurn().name).toEqual("Steve");
     })
-
+    it('after everyone has thrown all their balls the game will end', () => {
+        const game = new BowlingGame(["Steve", "AJ"]);
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        game.recordScore(4)
+        game.recordScore(5)
+        expect(game.isGameFinished()).toEqual(true);
+    })
 })
