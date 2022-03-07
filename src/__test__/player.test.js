@@ -175,5 +175,16 @@ describe('Get player points', () => {
         expect(player.frameScoring(10)).toEqual(300)
         expect(player.frameScoring(1)).toEqual(30)
         expect(player.frameScoring(3)).toEqual(90)
+        
     });
-});
+    it('Given a player tries to score more than 10 for a frame, it doesnt work', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(11)
+        expect(player.recordBall(11)).toEqual(false)
+    });
+    it('Given a player tries to score less than 0 for a frame, it doesnt work', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(-1)
+        expect(player.recordBall(-1)).toEqual(false)
+    });
+})

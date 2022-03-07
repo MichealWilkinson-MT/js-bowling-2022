@@ -2,10 +2,6 @@
 
 class BowlingGame {
 
-//gameScoring () = {
-
-
-//}
 
 }
 

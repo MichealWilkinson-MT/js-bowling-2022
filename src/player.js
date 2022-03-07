@@ -6,8 +6,12 @@ class BowlingPlayer {
         return this.score;
     }
     recordBall = (numberOfPins) => {
+        if (numberOfPins > 10 || numberOfPins < 0) {
+            return false
+        }
         this.score += numberOfPins
         this.balls.push(numberOfPins)
+        return true
     }
     isAStrike = (numberOfPins) => {
         if (this.score == 10) {
