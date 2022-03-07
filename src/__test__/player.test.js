@@ -143,5 +143,19 @@ describe('Get player points', () => {
         player.recordBall(8)
         expect(player.isFrameComplete(1)).toEqual(false)
     });
-
+    it('Given a player has bowled a strike and their next throw is a strike it shows 20 + pins knocked in next frame', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(2)
+        player.recordBall(2)
+        expect(player.frameScoring(1)).toEqual(24)
+    });
+    it('Given a player has bowled two strike then dont bowl it shows X', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(10)
+        player.recordBall(10)
+        player.recordBall(2)
+        expect(player.frameScoring(1)).toEqual("X")
+    });
 });

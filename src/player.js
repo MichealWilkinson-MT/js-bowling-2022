@@ -87,6 +87,9 @@ class BowlingPlayer {
         if (this.isFrameAStrike(framenumber) && !this.isFrameComplete(framenumber + 1)) {
             return "X";
         }
+        if (this.isFrameAStrike(framenumber) && this.isFrameAStrike(framenumber + 1) && !this.isFrameComplete(framenumber + 2)) {
+            return "X";
+        }
         for (let i = 1; i <= framenumber; i++) {
             score = score + this.getFramePins(i)
             if (this.isFrameASpare(i)) {
@@ -96,6 +99,11 @@ class BowlingPlayer {
             if (this.isFrameAStrike(i)) {
                 const theNextFrame = this.getFramePins(i + 1)
                 score = score + theNextFrame
+                if (this.isFrameAStrike(i + 1)) {
+                    const theFrameAfter = this.getFramePins(i + 2)
+                    score = score + theFrameAfter
+                }
+                    
             }
         }
         return score
