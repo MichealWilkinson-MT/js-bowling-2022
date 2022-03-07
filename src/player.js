@@ -16,52 +16,45 @@ class BowlingPlayer {
         return false
     }
     getFramePins = (framenumber) => {
-        let score = 0
-        let frame = 1
-        let frameball = 1
-        for (let i = 0; i < this.balls.length; i++) {
-            if (frame == framenumber) {
-                score = score + this.balls[i]
-            }
-            if (this.balls[i] == 10) {
-                frameball = 1
-                frame++
-                continue
-            }
-            frameball++
-            if (frameball > 2) {
-                frame++
-                frameball = 1
-            }
+        const balls = this.getBallsInFrame(framenumber)
+        let totalScore = 0
+        for (let i = 0; i < balls.length; i++){
+            totalScore = totalScore + balls[i]
         }
-        return score
+        return totalScore
     }
     isFrameAStrike = (framenumber) => {
-        let score = 0
-        let frame = 1
-        let frameball = 1
-        for (let i = 0; i < this.balls.length; i++) {
-            if (frame == framenumber) {
-                return this.balls[i] == 10
-            }
-
-            if (this.balls[i] == 10) {
-                frameball = 1
-                frame++
-                continue
-            }
-
-            frameball++
-            if (frameball > 2) {
-                frame++
-                frameball = 1
-            }
+        const balls = this.getBallsInFrame(framenumber)
+        if (balls[0] == 10){
+            return true
         }
+        return false
+
     }
 
     getBallsInFrame = (framenumber) => {
         let balls = []
-        return balls
+        let frame = 1
+        let frameball = 1
+        for (let i = 0; i < this.balls.length; i++) {
+            if (frame == framenumber) {
+                balls.push(this.balls[i])
+            }
+
+            if (this.balls[i] == 10) {
+                frameball = 1
+                frame++
+                continue
+            }
+
+            frameball++
+            if (frameball > 2) {
+                frame++
+                frameball = 1
+            }
+        }
+            return balls
+        
 
     }
 
@@ -70,13 +63,28 @@ class BowlingPlayer {
                 return true
             }
             return false
-            //is a strike == no && score == 10 
-            //return true
+
         }
+
+
+
+
+    //gameScoring = () => {
+     //   for (let i = 1; i <= 10; i++){
+
+     //   }
+//for loop to go through frames
+// if statment for strike
+//if statment for spare
+// way to add the output onto score
+
+
+
     }
 module.exports = {
     BowlingPlayer
 }
 
 
-//calculate score
+// calculate score
+// 

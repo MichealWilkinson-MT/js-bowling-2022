@@ -62,10 +62,18 @@ describe('Get player points', () => {
         player.recordBall(10)
         expect(player.isFrameAStrike(1, 7)).toEqual(true)
     })
-});
-    it('Given a player has rolled a ball and hit a strike in frame 1 & 7 it will return strike for frame 1 & 7', () => {
+    it('Given a player has rolled two balls and hit a spare in frame 1 it will return a spare for frame 1', () => {
         const player = new BowlingPlayer();
         player.recordBall(9)
         player.recordBall(1)
         expect(player.isFrameASpare(1)).toEqual(true)
-})
+    })
+    it('Given a player has had 4 rolled balls it will return the total score', () => {
+        const player = new BowlingPlayer();
+        player.recordBall(5)
+        player.recordBall(4)
+        player.recordBall(3)
+        player.recordBall(1)
+        expect(player.getFramePins(1) + player.getFramePins(2)).toEqual(13)
+    });
+});
