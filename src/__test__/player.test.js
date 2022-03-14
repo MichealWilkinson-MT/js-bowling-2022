@@ -321,3 +321,18 @@ describe('Frame 10 completeness', () => {
     });
 });
 
+describe('last frame score issue', () => {
+    it('should return the score with a proper set of balls', () => {
+        const balls = [
+            9, 0, 1, 9, 2, 0, 8,
+            2, 3, 1, 6, 4, 5, 4,
+            7, 3, 3, 6, 10, 10, 1
+        ];
+        const player = new BowlingPlayer('Gary');
+        balls.forEach((ball) => {
+            player.recordBall(ball)
+        });
+        expect(player.getFrameScore(10)).toEqual(21);
+        expect(player.cumulativeFrameScoring(10)).toEqual(107)
+    });
+})

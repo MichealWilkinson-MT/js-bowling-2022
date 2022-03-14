@@ -204,9 +204,15 @@ class BowlingPlayer {
         if (this.isFrameAStrike(framenumber) && !this.isFrameComplete(framenumber + 1)) {
             return "X";
         }
-        // if they have bowled two strike and not completed the next frame yet return a X for both
-        if (this.isFrameAStrike(framenumber) && this.isFrameAStrike(framenumber + 1) && !this.isFrameComplete(framenumber + 2)) {
-            return "X";
+        if (framenumber == 10) {
+            if (this.isFrameAStrike(10) && this.isFrameAStrike(11) && this.getBallsInFrame(12).length == 0) {
+                return "X";
+            }
+        } else {
+            // if they have bowled two strike and not completed the next frame yet return a X for both
+            if (this.isFrameAStrike(framenumber) && this.isFrameAStrike(framenumber + 1) && !this.isFrameComplete(framenumber + 2)) {
+                return "X";
+            }
         }
 
         score = score + this.getFramePins(framenumber)
