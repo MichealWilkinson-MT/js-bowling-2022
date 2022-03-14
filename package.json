@@ -19,5 +19,9 @@
   "devDependencies": {
     "jest": "^27.5.1"
   },
-  "exports": "./src/"
+  "exports": {
+    "./player": "./src/player.js",
+    "./game": "./src/game.js",
+    ".": "./src/game.js"
+  }
 }
