@@ -1,34 +1,46 @@
 
 class BowlingPlayer {
-    
+
     balls = []
     /**
-     * constructor for player name
+     * constructor for player class
+     * @param {string} playerName
      */
     constructor(playerName) {
-    this.name = playerName
+        this.name = playerName
     }
+
     /**
-     * returns the score
-     * @returns {number}
-     */
-    getScore = () => {
-        return this.score;
-    }
-    /**
-     * Makes sure the number of pins scored is between 0-10
+     * Records a ball thrown by the player, ensures that the score for the frame is valid (IE: Between 0 and 10), will not record the value if the ball is invalid
      * @param {number} numberOfPins 
-     * @returns {boolean}
+     * @returns {boolean} false if the total supplied is invalid
      */
     recordBall = (numberOfPins) => {
         if (numberOfPins > 10 || numberOfPins < 0) {
             return false
         }
+        let frame = this.getCurrentFrame();
+        if (this.getFramePins(frame) + numberOfPins > 10) {
+            if (!(frame == 10 && (this.isFrameASpare(frame) || this.isFrameAStrike(frame)))) {
+                return false
+            }
+        }
+
+        //adds the number of pins scored to the array balls
+        this.balls.push(numberOfPins)
+        return true
+    }
+
+    /**
+    * Gets the current frame number IE: the lowest incomplete framenumber 
+    * 
+    * @returns {number}
+    */
+    getCurrentFrame = () => {
         let frame = 1
         let frameball = 1
-        // for loop to check the frames. If its a strike advance the frame and if they have had two bowls advance the frame
         for (let i = 0; i < this.balls.length; i++) {
-    
+
             if (this.balls[i] == 10) {
                 frameball = 1
                 frame++
@@ -41,16 +53,15 @@ class BowlingPlayer {
                 frameball = 1
             }
         }
-        if (!this.isFrameComplete(frame) && (this.getFramePins(frame) + numberOfPins > 10)){
-            return false
+        if (this.isFrameComplete(frame)) {
+            frame++
         }
-            
-        //adds the number of pins scored to the array balls
-        this.balls.push(numberOfPins)
-        return true
+        return Math.min(10, frame)
     }
+
     /**
-     * This adds the number of pins in the current frame to the total score
+     * This gets the number of pins hit total in a given frame
+     * 
      * @param {number} framenumber 
      * @returns {number}
      */
@@ -62,6 +73,7 @@ class BowlingPlayer {
         }
         return totalScore
     }
+
     /**
      * Determines if the frame is a strike
      * @param {number} framenumber 
@@ -75,11 +87,14 @@ class BowlingPlayer {
         return false
 
     }
-/**
- * This checks that both balls have been thrown in a frame then advances
- * @param {number} framenumber 
- * @returns array of numbers
- */
+
+    /**
+     * Gets the balls thrown in a given frame, will return an array with between 0 and 2 
+     * elements depending on how many balls were thrown for the frame
+     * 
+     * @param {number} framenumber 
+     * @returns {number[]}
+     */
     getBallsInFrame = (framenumber) => {
         let balls = []
         let frame = 1
@@ -108,6 +123,7 @@ class BowlingPlayer {
 
 
     }
+
     /**
      * checks if the frame is a spare
      * @param {number} framenumber 
@@ -127,17 +143,53 @@ class BowlingPlayer {
      * @returns {boolean}
      */
     isFrameComplete = (framenumber) => {
-        if (this.getBallsInFrame(framenumber).length == 2 || this.isFrameAStrike(framenumber)) {
+        // if we're in frame 10 we need to perform different checks (frame 10 can have upto 3 balls...)
+        if (framenumber == 10) {
+            // Do they deserve an extra frame?
+            if (this.isFrameAStrike(10)) {
+                // The do and the extra frame is incomplete
+                if (!this.isFrameComplete(11)) {
+                    return false;
+                }
+                if (this.isFrameAStrike(11)) {
+                    return this.getBallsInFrame(12).length > 0
+                }
                 return true
             }
-            return false
+            if (this.isFrameASpare(10)) {
+                return this.getBallsInFrame(11).length > 0
+            }
         }
+        if (this.getBallsInFrame(framenumber).length == 2 || this.isFrameAStrike(framenumber)) {
+            return true
+        }
+        return false
+    }
+
     /**
-     * Adds the scoring together
+     * Determines the cumulative score achived by a given frame in the game
      * @param {number} framenumber 
      * @returns {number}
      */
-    frameScoring = (framenumber) => {
+    cumulativeFrameScoring = (framenumber) => {
+        let score = 0
+        // for loop to add the additional scores to score
+        for (let i = 1; i <= framenumber; i++) {
+            const framescore = this.getFrameScore(i);
+            if (framescore == "" || framescore == "/" || framescore == "X") {
+                return framescore;
+            }
+            score = score + framescore;
+        }
+        return score
+    }
+
+    /**
+    * Determines the score achived in a given frame in the game
+    * @param {number} framenumber 
+    * @returns {number}
+    */
+    getFrameScore = (framenumber) => {
         let score = 0
         const balls = this.getBallsInFrame(framenumber)
         // if the next frame isnt completed return a string
@@ -156,34 +208,30 @@ class BowlingPlayer {
         if (this.isFrameAStrike(framenumber) && this.isFrameAStrike(framenumber + 1) && !this.isFrameComplete(framenumber + 2)) {
             return "X";
         }
-        // for loop to add the additional scores to score
-        for (let i = 1; i <= framenumber; i++) {
-            score = score + this.getFramePins(i)
-            // if its a spare it adds the next bowl to score
-            if (this.isFrameASpare(i)) {
-                const theNextBall = this.getBallsInFrame(i + 1)[0]
-                score = score + theNextBall
-            }
-            // if its a strike it adds the next frame to the score
-            if (this.isFrameAStrike(i)) {
-                const theNextFrame = this.getFramePins(i + 1)
-                score = score + theNextFrame
-                // if they have thrown two strikes it adds pins from the frame + 2
-                if (this.isFrameAStrike(i + 1)) {
-                    const theFrameAfter = this.getFramePins(i + 2)
-                    score = score + theFrameAfter
-                }
-                    
-            }
+
+        score = score + this.getFramePins(framenumber)
+        // if its a spare it adds the next bowl to score
+        if (this.isFrameASpare(framenumber)) {
+            const theNextBall = this.getBallsInFrame(framenumber + 1)[0]
+            score = score + theNextBall
         }
+        // if its a strike it adds the next frame to the score
+        if (this.isFrameAStrike(framenumber)) {
+            const theNextFrame = this.getFramePins(framenumber + 1)
+            score = score + theNextFrame
+            // if they have thrown two strikes it adds pins from the frame + 2
+            if (this.isFrameAStrike(framenumber + 1)) {
+                const theFrameAfter = this.getFramePins(framenumber + 2)
+                score = score + theFrameAfter
+            }
+
+        }
+
         return score
     }
 }
 
 
-
 module.exports = {
     BowlingPlayer
 }
-
-
