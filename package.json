@@ -22,6 +22,6 @@
   "exports": {
     "./player": "./src/player.js",
     "./game": "./src/game.js",
-    ".": "./src/game.js"
+    ".": "./src/*.js"
   }
 }
